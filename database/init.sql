@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS appDB;
+CREATE USER IF NOT EXISTS 'user'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON appDB.* TO 'user'@'%'; 
+FLUSH PRIVILEGES;
+
+USE appDB;
+CREATE TABLE users (
+    id int(10) NOT NULL AUTO_INCREMENT,
+    nickname text NOT NULL,
+    PRIMARY KEY (id)
+);

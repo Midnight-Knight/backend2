@@ -1,0 +1,50 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    background: #F3F4F6;
+}
+
+a, button, input {
+    padding: 8px 16px;
+    background: #E1E1E1;
+    text-decoration: none;
+    color: black;
+    border-radius: 4px;
+    transition: background 300ms;
+}
+
+a:hover, button:hover, input:hover {
+    background: #EFEFEF;
+}
+
+.block {
+    width: 330px;
+    border-radius: 16px;
+    padding: 16px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.block > div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
