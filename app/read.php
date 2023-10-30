@@ -31,7 +31,7 @@ $result = $conn->query($sql);
                 }
             ?>
             <div>
-                <a href="index.php">назад</a>
+                <a href="http://localhost:9000/">назад</a>
             </div>
         </div>
     </body>

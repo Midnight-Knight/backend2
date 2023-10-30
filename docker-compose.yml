@@ -1,27 +1,47 @@
 version: '3'
 
 services:
-    web_server:
-        build:
-            context: ./backend
-            dockerfile: Dockerfile
-        ports:
-            - "8001:80"
-        volumes:
-            - ./app:/var/www/html
-        restart: always
-        links:
-            - db
     db:
-        build:
-            context: ./database
-            dockerfile: Dockerfile
+        image: mysql
         volumes:
             - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
             - db_data:/var/lib/mysql
         restart: always
         environment:
             MYSQL_ROOT_PASSWORD: password
+        networks:
+            - mynetwork2
+
+    web_server:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        ports:
+            - "8006:80"
+        volumes:
+            - ./app:/var/www/html
+        restart: always
+        links:
+            - db
+        networks:
+            - mynetwork2
+
+
+    nginx:
+        build:
+          context: ./nginx
+          dockerfile: Dockerfile
+        volumes:
+          - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+          - ./static:/usr/share/nginx/html
+        ports:
+          - "9000:80"
+        depends_on:
+          - web_server
+        networks:
+          - mynetwork2
 
 volumes:
     db_data:
+networks:
+    mynetwork2:
